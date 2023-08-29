@@ -1,4 +1,4 @@
-import { Box, Checkbox, Divider, IconButton, Paper, Stack, Typography } from "@mui/material";
+import { Box, Divider, IconButton, Paper, Stack, Typography } from "@mui/material";
 import { INote } from "../interfaces/INote";
 import { useNotesContext } from "../contexts/NotesContext";
 import DeleteIcon from '@mui/icons-material/Delete';
