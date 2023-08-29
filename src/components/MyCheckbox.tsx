@@ -3,12 +3,11 @@ import { Checkbox } from "@mui/material";
 interface MyCheckBoxProps {
     name: string | undefined;
     edge: false | "start" | "end" | undefined;
-    handleChange: any;
+    handleChange: (event: React.ChangeEvent) => void;
     isChecked? : boolean;
-    noteId? : string;
 }
 
-const MyCheckBox = ({name, edge,isChecked,noteId,handleChange}: MyCheckBoxProps) => {
+const MyCheckBox = ({name, edge,isChecked,handleChange}: MyCheckBoxProps) => {
 
     return (
         <Checkbox

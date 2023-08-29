@@ -6,7 +6,7 @@ interface MyInputProps {
     variant: TextFieldVariants | undefined;
     size: TextFieldPropsSizeOverrides | undefined | any;
     isRequired: boolean | undefined;
-    handleChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+    handleChange: (event: React.ChangeEvent) => void;
     value? : string;
 }
 
@@ -21,6 +21,7 @@ const MyInput = ({ name, label, variant, size, isRequired, handleChange, value }
             size={size}
             required={isRequired}
             value={value}
+            color="primary"
         />
     )
 }

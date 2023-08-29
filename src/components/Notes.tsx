@@ -1,5 +1,4 @@
 import { List } from "@mui/material";
-
 import { useNotesContext } from "../contexts/NotesContext";
 import Note from "./Note";
 

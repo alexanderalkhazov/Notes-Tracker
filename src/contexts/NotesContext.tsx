@@ -3,11 +3,13 @@ import { INotesContext } from "../interfaces/INotesContext";
 import { getFromStorage, saveToStorage } from "../services/storage";
 import { INote } from "../interfaces/INote";
 import { v4 as uuid } from 'uuid';
+import { useNavigate } from 'react-router-dom';
 
 const NotesContext = createContext<INotesContext | null>(null);
 
 export const NotesProvider = ({ children }: any) => {
     const [notes, setNotes] = useState<INote[]>(getFromStorage());
+    const navigate = useNavigate();
 
     const [inputs, setInputs] = useState({
         title: '',
@@ -22,17 +24,14 @@ export const NotesProvider = ({ children }: any) => {
             content: inputs.content,
             isChecked: inputs.isChecked
         }
-        console.log(newNote);
-        
         saveToStorage([...notes, newNote]);
         setNotes([...notes, newNote]);
+        navigate('/');
     }
 
     const removeNote = (id: string) => {
         const updatedList = notes.filter(note => note.id !== id);
-
         setNotes(updatedList);
-
         saveToStorage(updatedList);
     }
 
@@ -40,7 +39,7 @@ export const NotesProvider = ({ children }: any) => {
         const { name, value, type, checked } = event.target;
         const inputValue = type === 'checkbox' ? checked : value;
         console.log(inputValue);
-        
+
         setInputs({
             ...inputs,
             [name]: inputValue
@@ -61,16 +60,17 @@ export const NotesProvider = ({ children }: any) => {
             isChecked: inputs.isChecked
         }
         console.log(updatedNote);
-        
+
         const newNotes = notes.map(note => note.id === noteToEdit.id ? updatedNote : note);
         setNotes(newNotes);
         saveToStorage(newNotes);
+        navigate('/');
     }
 
 
 
     return (
-        <NotesContext.Provider value={{editNote ,notes, addNote, removeNote, handleInput, toggleNote }}>
+        <NotesContext.Provider value={{notes, editNote, addNote, removeNote, handleInput, toggleNote }}>
             {children}
         </NotesContext.Provider>
     )

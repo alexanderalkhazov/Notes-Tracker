@@ -13,7 +13,8 @@ function App() {
   return (
     <>
 
-      <Container maxWidth={'sm'}>
+      <Container maxWidth={'sm'} className='App'>
+        <Navbar />
         <Routes>
           <Route path='/' element={<Feed />} />
           <Route path='/addnote' element={<AddNote />} />

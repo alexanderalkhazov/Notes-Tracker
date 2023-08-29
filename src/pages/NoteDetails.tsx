@@ -12,17 +12,15 @@ const NoteDetails = () => {
 
     return (
         <>
-            <Box>
+            {note ? (<Box>
                 <Stack direction={'row'} justifyContent={'center'} sx={{ p: 2 }}>
                     <Typography variant="h5">Note Details.</Typography>
                 </Stack>
                 <Divider />
                 <Stack direction={'column'} spacing={1} sx={{ p: 2 }}>
-                    <Paper elevation={5} sx={{ minHeight: 50, p: 2 }}>
-                        <Typography>Title: {note?.title}</Typography>
-                    </Paper>
-                    <Paper elevation={5} sx={{ minHeight: 50, p: 2 }}>
-                        <Typography>Content: {note?.content}</Typography>
+                    <Paper elevation={5} sx={{ minHeight: 50, p: 2, display:'flex',flexDirection:'column',gap:5}}>
+                        <Typography>Title: {note.title}</Typography>         
+                        <Typography>Content: {note.content}</Typography>
                     </Paper>
                 </Stack>
                 <Stack>
@@ -32,7 +30,9 @@ const NoteDetails = () => {
                         </IconButton>
                     </Link>
                 </Stack>
-            </Box>
+            </Box>) : (<Paper><Typography>No Note Was Found</Typography></Paper>)}
+
+        
         </>
     )
 }

@@ -1,15 +1,9 @@
-import Navbar from "../components/Navbar"
-import Notes from "../components/Notes"
-
+import Notes from "../components/Notes";
 
 const Feed = () => {
     return (
-        <>
-            <Navbar />
-            <Notes />
-        </>
+        <Notes />
     )
-
 }
 
 export default Feed
