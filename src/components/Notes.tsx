@@ -10,7 +10,7 @@ const Notes = () => {
     const { notes } = useNotesContext();
 
     return (
-        <List sx={{ width: '100%', maxWidth: 600, bgcolor: 'background.paper' }}>
+        <List>
             {notes.map(note => (
                 <Note key={note.id} note={note}/>
             ))}
