@@ -38,8 +38,6 @@ export const NotesProvider = ({ children }: any) => {
     const handleInput = (event: any) => {
         const { name, value, type, checked } = event.target;
         const inputValue = type === 'checkbox' ? checked : value;
-        console.log(inputValue);
-
         setInputs({
             ...inputs,
             [name]: inputValue
@@ -59,8 +57,6 @@ export const NotesProvider = ({ children }: any) => {
             content: inputs.content,
             isChecked: inputs.isChecked
         }
-        console.log(updatedNote);
-
         const newNotes = notes.map(note => note.id === noteToEdit.id ? updatedNote : note);
         setNotes(newNotes);
         saveToStorage(newNotes);

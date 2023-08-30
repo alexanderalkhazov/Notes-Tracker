@@ -1,4 +1,4 @@
-import { Box, Divider, IconButton, Paper, Stack, Typography } from "@mui/material";
+import { Box, Divider, IconButton, Card, CardContent, Typography, CardActions } from "@mui/material";
 import { INote } from "../interfaces/INote";
 import { useNotesContext } from "../contexts/NotesContext";
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -22,46 +22,23 @@ const Note = ({ note }: Props) => {
 
     return (
         <>
-            <Paper
-                elevation={6}
-                sx={{ p: 2, mt: 1 }}
-            >
-                <Box
-                    display={'flex'}
-                    justifyContent={'space-between'}
-                >
-                    <Stack
-                        sx={{ ml: 4 }}
-                    >
+            <Box width={300}>
+                <Card>
+                    <CardContent>
                         <Typography
+                            gutterBottom
                             variant="h6"
-                            sx={{
-                                mb: 1,
-                            }}
                         >
                             {formatTitle()}
                         </Typography>
-
                         {note.isChecked ? (<Divider sx={{ backgroundColor: 'red' }} />) : (<Divider />)}
-                    </Stack>
+                    </CardContent>
 
-                    <Stack
-                        spacing={1}
-                        direction={'row'}
-                        justifyContent={'center'}
-                        alignItems={'center'}
-                    >
-                        <MyCheckBox
-                            name="isChecked"
-                            edge='start'
-                            isChecked={note.isChecked}
-                            handleChange={() => toggleNote(note.id)}
-                        />
+                    <CardActions>
                         <IconButton
                             edge="end"
                             aria-label="delete"
-                            onClick={() =>
-                                removeNote(note.id)}
+                            onClick={() => removeNote(note.id)}
                         >
                             <DeleteIcon />
                         </IconButton>
@@ -71,14 +48,23 @@ const Note = ({ note }: Props) => {
                                 <EditNoteIcon />
                             </IconButton>
                         </Link>
+                        <MyCheckBox
+                            name="isChecked"
+                            edge='start'
+                            isChecked={note.isChecked}
+                            handleChange={() => toggleNote(note.id)}
+                        />
+
                         <Link to={`/notedetails/${note.id}`}>
                             <IconButton>
                                 <ArrowForward />
                             </IconButton>
                         </Link>
-                    </Stack>
-                </Box>
-            </Paper>
+
+                    </CardActions>
+
+                </Card>
+            </Box>
         </>
     )
 }

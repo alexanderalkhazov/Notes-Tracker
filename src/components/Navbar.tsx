@@ -17,7 +17,7 @@ const Navbar = () => {
             >
                 <Button
                     variant="contained"
-                    size="medium"
+                    size="small"
                 >
                     Add a New Note
                 </Button>
