@@ -19,7 +19,9 @@ const NoteDetails = () => {
                 <Divider />
                 <Stack direction={'column'} spacing={1} sx={{ p: 2 }}>
                     <Paper elevation={5} sx={{ minHeight: 50, p: 2, display:'flex',flexDirection:'column',gap:5}}>
-                        <Typography>Title: {note.title}</Typography>         
+                        <Typography sx={{
+                            height:50
+                        }}>Title: {note.title}</Typography>         
                         <Typography>Content: {note.content}</Typography>
                     </Paper>
                 </Stack>
