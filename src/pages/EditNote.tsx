@@ -7,14 +7,14 @@ import { Link, useParams } from 'react-router-dom';
 
 const EditNote = () => {
 
-    const { notes, editNote, handleInput } = useNotesContext();
+    const { sortedNotes, editNote, handleInput } = useNotesContext();
     const { id } = useParams();
-    const noteToEdit = notes.find(note => note.id === id);
+    const noteToEdit = sortedNotes.find(note => note.id === id);
 
 
     return (
-        <Box>
-            <Stack>
+        <Stack spacing={2}>
+            <Stack spacing={2}>
                 <MyInput
                     handleChange={handleInput}
                     isRequired={true} size={'small'}
@@ -45,7 +45,7 @@ const EditNote = () => {
                     </IconButton>
                 </Link>
             </Stack>
-        </Box>
+        </Stack>
     )
 }
 

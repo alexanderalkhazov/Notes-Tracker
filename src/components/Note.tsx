@@ -1,11 +1,11 @@
+import MyCheckBox from "./MyCheckbox";
 import { Box, Divider, IconButton, Card, CardContent, Typography, CardActions, Stack } from "@mui/material";
-import { INote } from "../interfaces/INote";
 import { useNotesContext } from "../contexts/NotesContext";
+import { INote } from "../interfaces/INote";
+import { Link } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import ArrowForward from '@mui/icons-material/ArrowForward';
-import { Link } from 'react-router-dom';
-import MyCheckBox from "./MyCheckbox";
 
 
 interface Props {

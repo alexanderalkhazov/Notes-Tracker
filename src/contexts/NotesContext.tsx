@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { INotesContext } from "../interfaces/INotesContext";
 import { getFromStorage, saveToStorage } from "../services/storage";
 import { INote } from "../interfaces/INote";
@@ -8,7 +8,24 @@ import { useNavigate } from 'react-router-dom';
 const NotesContext = createContext<INotesContext | null>(null);
 
 export const NotesProvider = ({ children }: any) => {
-    const [notes, setNotes] = useState<INote[]>(getFromStorage());
+    const [notes, setNotes] = useState<INote[] | []>(getFromStorage());
+
+    const [sortedNotes,setSortedNotes] = useState<INote[] | []>([]);
+
+    useEffect(() => {
+
+        const sortedArray = notes.sort((note1:INote, note2:INote) => {
+            if (note1.isChecked === note2.isChecked) {
+                return 0; // No change in order
+              } else if (note1.isChecked) {
+                return -1; // a should come before b
+              } else {
+                return 1; // b should come before a
+              }
+        })
+        setSortedNotes(sortedArray);
+    },[notes])
+
     const navigate = useNavigate();
 
     const [inputs, setInputs] = useState({
@@ -66,7 +83,15 @@ export const NotesProvider = ({ children }: any) => {
 
 
     return (
-        <NotesContext.Provider value={{notes, editNote, addNote, removeNote, handleInput, toggleNote }}>
+        <NotesContext.Provider value={
+            {
+                sortedNotes,
+                editNote,
+                addNote,
+                removeNote,
+                handleInput,
+                toggleNote
+            }}>
             {children}
         </NotesContext.Provider>
     )

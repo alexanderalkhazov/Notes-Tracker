@@ -6,9 +6,9 @@ import ArrowBack from '@mui/icons-material/ArrowBack';
 
 const NoteDetails = () => {
 
-    const { notes } = useNotesContext();
+    const { sortedNotes } = useNotesContext();
     const { id } = useParams();
-    const note = notes.find(note => note.id === id);
+    const note = sortedNotes.find(note => note.id === id);
 
     return (
         <>
