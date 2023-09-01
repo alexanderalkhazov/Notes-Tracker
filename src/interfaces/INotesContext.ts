@@ -1,7 +1,7 @@
 import { INote } from "./INote";
 
 export interface INotesContext {
-    notes: INote[];
+    sortedNotes: INote[];
     addNote: () => void;
     editNote: (note: INote) => void;
     removeNote: (id: string) => void;

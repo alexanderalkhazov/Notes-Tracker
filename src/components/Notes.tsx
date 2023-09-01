@@ -1,16 +1,17 @@
-import { useNotesContext } from "../contexts/NotesContext";
 import Note from "./Note";
+import { useNotesContext } from "../contexts/NotesContext";
+import { Stack } from "@mui/material";
 
 const Notes = () => {
 
-    const { notes } = useNotesContext();
+    const { sortedNotes } = useNotesContext();
 
     return (
-        <>
-            {notes.map(note => (
+        <Stack spacing={1}>
+            {sortedNotes.map(note => (
                 <Note key={note.id} note={note}/>
             ))}
-        </>
+        </Stack>
     )
 };
 
