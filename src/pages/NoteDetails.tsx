@@ -17,14 +17,20 @@ const NoteDetails = () => {
                     <Typography variant="h5">Note Details.</Typography>
                 </Stack>
                 <Divider />
+
                 <Stack direction={'column'} spacing={1} sx={{ p: 2 }}>
-                    <Paper elevation={5} sx={{ minHeight: 50, p: 2, display:'flex',flexDirection:'column',gap:5}}>
+                    <Paper elevation={5} sx={{ minHeight: 50, p: 2, display: 'flex', flexDirection: 'column', gap: 5 }}>
                         <Typography sx={{
-                            height:50
-                        }}>Title: {note.title}</Typography>         
-                        <Typography>Content: {note.content}</Typography>
+                            wordWrap: 'break-word',
+                        }}>Title: {note.title}</Typography>
+                        <Typography sx={{
+                            wordWrap: 'break-word',
+                        }}>Content: {note.content}</Typography>
                     </Paper>
                 </Stack>
+
+
+
                 <Stack>
                     <Link to={'/'}>
                         <IconButton color="primary">
@@ -34,7 +40,7 @@ const NoteDetails = () => {
                 </Stack>
             </Box>) : (<Paper><Typography>No Note Was Found</Typography></Paper>)}
 
-        
+
         </>
     )
 }

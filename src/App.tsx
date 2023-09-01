@@ -13,10 +13,7 @@ function App() {
   return (
     <>
 
-      <Container maxWidth={'xs'} className='App' sx={{
-        overflow: 'auto',
-        marginTop: 4,
-      }}>
+      <Container maxWidth='xs'>
         <Navbar />
         <Routes>
           <Route path='/' element={<Feed />} />

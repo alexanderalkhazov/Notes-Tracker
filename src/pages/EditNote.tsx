@@ -14,10 +14,7 @@ const EditNote = () => {
 
     return (
         <Box>
-            <Stack
-                direction={'column'}
-                spacing={2}
-            >
+            <Stack>
                 <MyInput
                     handleChange={handleInput}
                     isRequired={true} size={'small'}
@@ -33,9 +30,7 @@ const EditNote = () => {
                     variant="outlined"
                 />
             </Stack>
-            <Stack
-                sx={{ mt: 2 }}
-            >
+            <Stack>
                 <Button
                     variant={'contained'}
                     onClick={() => editNote(noteToEdit!)}

@@ -1,4 +1,4 @@
-import { Box, Divider, IconButton, Card, CardContent, Typography, CardActions } from "@mui/material";
+import { Box, Divider, IconButton, Card, CardContent, Typography, CardActions, Stack } from "@mui/material";
 import { INote } from "../interfaces/INote";
 import { useNotesContext } from "../contexts/NotesContext";
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -17,24 +17,27 @@ const Note = ({ note }: Props) => {
     const { toggleNote, removeNote } = useNotesContext();
 
     const formatTitle = () => {
-        return `${note.title.substring(0, 20)}...`;
+        return `${note.title.substring(0, 25)}...`;
     }
 
     return (
-        <>
-            <Box width={300}>
-                <Card>
-                    <CardContent>
-                        <Typography
-                            gutterBottom
-                            variant="h6"
-                        >
-                            {formatTitle()}
-                        </Typography>
-                        {note.isChecked ? (<Divider sx={{ backgroundColor: 'red' }} />) : (<Divider />)}
-                    </CardContent>
+        <Box>
+            <Card>
+                <CardContent>
+                    <Typography
+                        gutterBottom
+                        variant="h6"
+                    >
+                        {formatTitle()}
+                    </Typography>
+                    {note.isChecked ? (<Divider sx={{ backgroundColor: 'red' }} />) : (<Divider />)}
+                </CardContent>
 
-                    <CardActions>
+                <CardActions>
+                    <Stack
+                        direction={'row'}
+                        alignItems={'center'}
+                    >
                         <IconButton
                             edge="end"
                             aria-label="delete"
@@ -60,12 +63,11 @@ const Note = ({ note }: Props) => {
                                 <ArrowForward />
                             </IconButton>
                         </Link>
+                    </Stack>
+                </CardActions>
 
-                    </CardActions>
-
-                </Card>
-            </Box>
-        </>
+            </Card>
+        </Box>
     )
 }
 

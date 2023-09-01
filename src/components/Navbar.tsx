@@ -1,28 +1,30 @@
-import { Button, Stack } from "@mui/material"
+import { Button, AppBar, Toolbar, Box } from "@mui/material"
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
-        <Stack
-            direction={'row'}
-            alignItems={'center'}
-            justifyContent={'center'}
-            sx={{
-                paddingBottom: 1,
-                paddingTop: 1,
-            }}
-        >
-            <Link
-                to={'/addnote'}
-            >
-                <Button
-                    variant="contained"
-                    size="small"
-                >
-                    Add a New Note
-                </Button>
-            </Link>
-        </Stack>
+        <Box mb={1}>
+            <AppBar position="static" sx={{
+                backgroundColor: 'primary.light'
+            }}>
+                <Toolbar sx={{
+                    display: 'flex',
+                    justifyContent: 'center'
+                }}>
+                    <Link
+                        to={'/addnote'}
+                    >
+                        <Button
+                            variant="contained"
+                            size="small"     
+                            color="inherit"                      
+                        >
+                            Add a New Note
+                        </Button>
+                    </Link>
+                </Toolbar>
+            </AppBar>
+        </Box>
     )
 }
 
