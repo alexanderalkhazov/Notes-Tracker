@@ -1,5 +1,5 @@
 import { useNotesContext } from '../contexts/NotesContext';
-import { Box, Button, IconButton, Stack } from '@mui/material';
+import { Button, IconButton, Stack } from '@mui/material';
 import MyInput from '../components/MyInput';
 
 import ArrowBack from '@mui/icons-material/ArrowBack';

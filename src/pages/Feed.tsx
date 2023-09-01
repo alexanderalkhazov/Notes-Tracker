@@ -1,4 +1,3 @@
-import { Box } from "@mui/material";
 import Notes from "../components/Notes";
 
 const Feed = () => {
